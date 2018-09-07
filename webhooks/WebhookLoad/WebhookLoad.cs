@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
@@ -12,31 +11,38 @@ namespace WebhookLoad
 
         static void Main()
         {
-            RunAsync().GetAwaiter().GetResult();
+            string endPoint = "http://localhost:5005/api/widget";
+            RunAsync(endPoint).GetAwaiter().GetResult();
         }
 
-        static async Task RunAsync()
+        static async Task RunAsync(string endPoint)
         {
             // Update port # in the following line.
-            client.BaseAddress = new Uri("http://localhost:50092/");
+            client.BaseAddress = new Uri(endPoint);
             client.DefaultRequestHeaders.Accept.Clear();
             client.DefaultRequestHeaders.Accept.Add(
                 new MediaTypeWithQualityHeaderValue("application/json"));
 
             try
             {
-                var jsonParm = GetJson();
-                var response = await client.GetAsync("api/values");
-                if (response.IsSuccessStatusCode)
+                for (int i = 0; i < 1000; ++i)
                 {
-                    Console.WriteLine(response.Content.ReadAsStringAsync().Result);
-                }
-                else
-                {
-                    Console.WriteLine("Couldn't hit end point");
-                }
 
+                    var jsonParm = GetJson();
 
+                    HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Post, endPoint);
+                    request.Content = new StringContent(jsonParm, System.Text.Encoding.UTF8, "application/json");
+
+                    var response = await client.SendAsync(request);
+                    if (response.IsSuccessStatusCode)
+                    {
+                        Console.WriteLine("success"); //response.Content.ReadAsStringAsync().Result);
+                    }
+                    else
+                    {
+                        Console.WriteLine("Couldn't hit end point");
+                    }
+                }
 
             }
             catch (Exception e)
@@ -44,7 +50,7 @@ namespace WebhookLoad
                 Console.WriteLine(e.Message);
             }
 
-            Console.ReadLine();
+//            Console.ReadLine();
         }
 
         private static string GetJson()
