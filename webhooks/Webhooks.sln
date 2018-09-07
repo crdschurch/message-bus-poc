@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebhookReceive", "WebhookRe
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebhookSend", "WebhookSend\WebhookSend.csproj", "{030F0CD5-5FC8-44DA-B56E-1F8F941DB37C}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebhookLoad", "WebhookLoad\WebhookLoad.csproj", "{B6659198-6336-43EF-BC33-259BE1C3EA52}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{030F0CD5-5FC8-44DA-B56E-1F8F941DB37C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{030F0CD5-5FC8-44DA-B56E-1F8F941DB37C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{030F0CD5-5FC8-44DA-B56E-1F8F941DB37C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B6659198-6336-43EF-BC33-259BE1C3EA52}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B6659198-6336-43EF-BC33-259BE1C3EA52}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B6659198-6336-43EF-BC33-259BE1C3EA52}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B6659198-6336-43EF-BC33-259BE1C3EA52}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
