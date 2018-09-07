@@ -2,7 +2,7 @@
 
 namespace WebhookReceive
 {
-    class Program
+    class WebhoodReceive
     {
         static void Main(string[] args)
         {

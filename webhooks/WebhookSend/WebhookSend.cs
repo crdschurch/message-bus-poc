@@ -10,7 +10,7 @@ using Microsoft.Extensions.Logging;
 
 namespace WebhookSend
 {
-    public class Program
+    public class WebhookSend
     {
         public static void Main(string[] args)
         {
