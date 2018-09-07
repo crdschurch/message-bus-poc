@@ -8,7 +8,7 @@ namespace WebhookSend.Services
         private readonly IConnection _connection;
         private readonly IModel _channel;
 
-        private readonly string QUEUE_NAME = "WebHookQueue";
+        private readonly string QUEUE_NAME = "WebhookQueue";
 
         public MessageQueueService()
         {
