@@ -9,7 +9,7 @@ namespace WebhookReceive
     {
         static void Main(string[] args)
         {
-            var factory = new ConnectionFactory() { HostName = "localhost" };
+            var factory = new ConnectionFactory() { HostName = "rabbit-int.crossroads.net" };
             using (var connection = factory.CreateConnection())
             using (var channel = connection.CreateModel())
             {
