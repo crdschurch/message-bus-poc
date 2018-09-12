@@ -17,7 +17,7 @@ namespace WebhookSend.Services
 //                UserName = user,
 //                Password = pass,
 //                VirtualHost = vhost,
-//                HostName = hostName,
+                HostName = "rabbit-int.crossroads.net",
                 Port = 5672
             };
 

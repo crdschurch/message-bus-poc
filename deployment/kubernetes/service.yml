@@ -12,5 +12,6 @@ spec:
   - name: admin
     port: 15672
     targetPort: 15672
+  type: LoadBalancer
   selector:
     app: crds-rabbitmq
