@@ -9,13 +9,17 @@ namespace WebhookLoad
     {
         static HttpClient client = new HttpClient();
 
-        static void Main()
+        static void Main(string[] args)
         {
+            int numMessages;
+            if (args.Length == 0 || !Int32.TryParse(args[0], out numMessages))
+                numMessages = 1;
+
             string endPoint = "http://localhost:5005/api/widget";
-            RunAsync(endPoint).GetAwaiter().GetResult();
+            RunAsync(endPoint, numMessages).GetAwaiter().GetResult();
         }
 
-        static async Task RunAsync(string endPoint)
+        static async Task RunAsync(string endPoint, int numMessages)
         {
             // Update port # in the following line.
             client.BaseAddress = new Uri(endPoint);
@@ -25,7 +29,7 @@ namespace WebhookLoad
 
             try
             {
-                for (int i = 0; i < 1000; ++i)
+                for (int i = 0; i < numMessages; ++i)
                 {
 
                     var jsonParm = GetJson();
@@ -36,7 +40,10 @@ namespace WebhookLoad
                     var response = await client.SendAsync(request);
                     if (response.IsSuccessStatusCode)
                     {
-                        Console.WriteLine("success"); //response.Content.ReadAsStringAsync().Result);
+                        if (i % 10000 == 0)
+                        {
+                            Console.WriteLine($"{i}: success"); //response.Content.ReadAsStringAsync().Result);
+                        }
                     }
                     else
                     {
