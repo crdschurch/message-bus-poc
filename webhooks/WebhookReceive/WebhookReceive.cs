@@ -15,12 +15,18 @@ namespace WebhookReceive
             {
                 channel.QueueDeclare(queue: "WebhookQueue", durable: true, exclusive: false, autoDelete: false, arguments: null);
 
+                int messageNumber = 0;
+
                 var consumer = new EventingBasicConsumer(channel);
                 consumer.Received += (model, ea) =>
                 {
                     var body = ea.Body;
                     var message = Encoding.UTF8.GetString(body);
-                    Console.WriteLine(" [x] Received {0}", message);
+
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.WriteLine($">>>>>>>>>>>> Received message #{++messageNumber} <<<<<<<<<<<<");
+                    Console.ResetColor();
+                    Console.WriteLine("{0}", message);
                 };
                 channel.BasicConsume(queue: "WebhookQueue", autoAck: true, consumer: consumer);
 
